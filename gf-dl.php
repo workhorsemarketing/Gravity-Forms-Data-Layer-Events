@@ -7,7 +7,7 @@
 /*
 Plugin Name: Gravity Forms Data Layer Events
 Plugin URI: https://www.workhorsemkt.com/
-Description: Fires off a Googlet data layer event <code>gf_form_submission</code> and includes parameters <code>gf_form_id</code> and <code>gf_form_name</code> when a Gravity Form is submitted. Works with all confirmation types (Ajax, text, Redirect, new page).
+Description: Fires off a Google Tag Manager data layer event <code>gf_form_submission</code> and includes parameters <code>gf_form_id</code> and <code>gf_form_name</code> when a Gravity Form is submitted. Works with all confirmation types (Ajax, text, Redirect, new page).
 Author: Workhorse Marketing
 Version: 1.0
 Author URI: https://www.workhorsemkt.com/

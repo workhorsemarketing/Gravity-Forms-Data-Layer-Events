@@ -1,9 +1,4 @@
 <?php
-
-/**
- * @package Gravity_Forms_Data_Layer_Events
- * @version 1.0
- */
 /*
 Plugin Name: Gravity Forms Data Layer Events
 Plugin URI: https://www.workhorsemkt.com/
@@ -12,7 +7,6 @@ Author: Workhorse Marketing
 Version: 1.0
 Author URI: https://www.workhorsemkt.com/
 */
-
 add_filter( 'gform_confirmation', function ( $confirmation, $form, $entry, $ajax ) {
 
 	if ($entry['status'] !== 'active') {

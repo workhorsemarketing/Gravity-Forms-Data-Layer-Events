@@ -18,14 +18,13 @@ if(window.self === window.top){
                 "event": "gf_form_submission",
                 "gf_form_id": 2,
                 "gf_form_name": "simple",
-                "email1": "testing1@test.com",
-                "email1_hashed": "852b59fb6bccb19c3801eebe0386b9988fe93c38fd21e527b1a282099378c673",
-                "email2": "testing2@test.com",
-                "email2_hashed": "e936dea8682a1810c2bfce78b4c355cbb4baac6ff494f05ab6ee87b8761cb071",                
+                "email": "testing1@builtbyworkhorse.com",
+                "email_hashed": "499039d0728c90994ac99e6ea50355450676bd434a11ec6f86d1f5477429b8c2",
+                "email2": "testing2@builtbyworkhorse.com",
+                "email2_hashed": "ad0f329c326e80765127fd3019336aac74092fc32fe41e435d38f96cfbacc277",                
             });
         }
 </script>
 ```
 
-
-Works with all confirmation types (AJAX, text, Redirect, new page). However we recommend AJAX as it's best for accessibility and user experience.
+Works with all confirmation types (AJAX, text, redirect, new page). However we recommend AJAX as it's best for accessibility and user experience.

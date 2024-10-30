@@ -2,9 +2,9 @@
 /*
 Plugin Name: Gravity Forms Data Layer Events
 Plugin URI: https://github.com/workhorsemarketing/Gravity-Forms-Data-Layer-Events
-Description: Fires off a Google Tag Manager data layer event <code>gf_form_submission</code> and includes parameters <code>gf_form_id</code>, <code>gf_form_name</code>, and <code>email</code> when a Gravity Form is submitted. Works with all confirmation types (Ajax, text, Redirect, new page).
+Description: Fires off a Google Tag Manager datalayer event <code>gf_form_submission</code> and includes event parameters when a Gravity Form is submitted. Works with all confirmation types (AJAX, text, redirect, new page). See README.md for technical details.
 Author: Workhorse
-Version: 1.2
+Version: 1.3
 Author URI: https://www.builtbyworkhorse.com/
 */
 
@@ -17,7 +17,6 @@ add_filter( 'gform_confirmation', function ( $confirmation, $form, $entry, $ajax
     $form_title = $form['title'];
     $redirect = "";
 
-    // Collect email fields and hashed values from entry data
     $email_js_array = '';
     $email_count = 1;
 
@@ -28,9 +27,16 @@ add_filter( 'gform_confirmation', function ( $confirmation, $form, $entry, $ajax
 
             if ( !empty($email_value) ) {
                 $hashed_email = hash('sha256', $email_value);
-                
-                $email_js_array .= '"email' . $email_count . '": "' . esc_js($email_value) . '",';
-                $email_js_array .= '"email' . $email_count . '_hashed": "' . esc_js($hashed_email) . '",';
+
+                // Set the first email key as "email" and "email_hashed"
+                if ($email_count === 1) {
+                    $email_js_array .= '"email": "' . esc_js($email_value) . '",';
+                    $email_js_array .= '"email_hashed": "' . esc_js($hashed_email) . '",';
+                } else {
+                    // Subsequent emails follow "email2", "email2_hashed", etc.
+                    $email_js_array .= '"email' . $email_count . '": "' . esc_js($email_value) . '",';
+                    $email_js_array .= '"email' . $email_count . '_hashed": "' . esc_js($hashed_email) . '",';
+                }
                 $email_count++;
             }
         }

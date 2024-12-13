@@ -5,7 +5,7 @@ Fires off a Google Tag Manager data layer event `gf_form_submission` and include
 
 *  `gf_form_id`  : Form ID in Gravity Forms
 *  `gf_form_name` : form name as it exists in Gravity Forms
-*  `emailX` : plain text email. If there are multiple email fields on the form it will increment X and add a new key/value for each
+*  `emailX` : plain text email. If there are multiple email fields on the form it will increment X and add a new key/value for each. Allows easy deployment to multiple forms as most conversion forms have a single email field; so you can use a simple data layer variable for `email` to capture.
 * `emailX_hashed` : SHA-256 hashed version of the email
 
 ## Features

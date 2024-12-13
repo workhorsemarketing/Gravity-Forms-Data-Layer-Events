@@ -8,6 +8,11 @@ Fires off a Google Tag Manager data layer event `gf_form_submission` and include
 *  `emailX` : plain text email. If there are multiple email fields on the form it will increment X and add a new key/value for each
 * `emailX_hashed` : SHA-256 hashed version of the email
 
+## Features
+* Works with all confirmation types (AJAX, Text, Page, Redirect). However we recommend AJAX and Text confirmation as it's best for accessibility, UX, and enhances reliability that any tags will fire correctly
+* If Gravity Forms flags a submission as spam, it does not fire
+
+
 For example:
 
 ```
@@ -28,3 +33,6 @@ if(window.self === window.top){
 ```
 
 Works with all confirmation types (AJAX, text, redirect, new page). However we recommend AJAX as it's best for accessibility and user experience.
+
+## To Do
+Fire off data for address and other fields to data layer

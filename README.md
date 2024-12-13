@@ -5,8 +5,8 @@ Fires off a Google Tag Manager data layer event `gf_form_submission` and include
 
 *  `gf_form_id`  : Form ID in Gravity Forms
 *  `gf_form_name` : form name as it exists in Gravity Forms
-*  `emailX` : plain text email. If there are multiple email fields on the form it will increment X and add a new key/value for each. Allows easy deployment to multiple forms as most conversion forms have a single email field; so you can use a simple data layer variable for `email` to capture.
-* `emailX_hashed` : SHA-256 hashed version of the email
+*  `email` and `emailX` : plain text email. If there are multiple email fields on the form it will increment X and add a new key/value for each. Allows easy deployment to multiple forms as most conversion forms have a single email field; so you can use a simple data layer variable for `email` to capture.
+* `email_hashed` and `emailX_hashed` : SHA-256 hashed version of the email
 
 ## Features
 * Works with all confirmation types (AJAX, Text, Page, Redirect). However we recommend AJAX and Text confirmation as it's best for accessibility, UX, and enhances reliability that any tags will fire correctly

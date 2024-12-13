@@ -23,9 +23,9 @@ if(window.self === window.top){
                 "event": "gf_form_submission",
                 "gf_form_id": 2,
                 "gf_form_name": "simple",
-                "email": "testing1@builtbyworkhorse.com",
+                "email": "testing1@emaildomain.com",
                 "email_hashed": "499039d0728c90994ac99e6ea50355450676bd434a11ec6f86d1f5477429b8c2",
-                "email2": "testing2@builtbyworkhorse.com",
+                "email2": "testing2@emaildomain.com",
                 "email2_hashed": "ad0f329c326e80765127fd3019336aac74092fc32fe41e435d38f96cfbacc277",                
             });
         }

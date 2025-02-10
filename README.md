@@ -32,5 +32,5 @@ Works with all confirmation types (AJAX, text, redirect, new page). However we r
 In addition email addresses are normalized before hashing to ensure accurate matching:
 
 * Converts to lowercase
-* Plus addressing removed (myemail+something@domain.com becomes myemail@domain.com)
-* Gmail addresses also have dots remove from local part (my.email@gmail.com becomes myemail@gmail.com
+* Plus addressing removed (`myemail+something@domain.com` becomes `myemail@domain.com`)
+* Gmail addresses also have dots remove from local part (`my.email@gmail.com` becomes `myemail@gmail.com`

@@ -4,12 +4,26 @@ Plugin Name: Gravity Forms Data Layer Events
 Plugin URI: https://github.com/workhorsemarketing/Gravity-Forms-Data-Layer-Events
 Description: Fires off a Google Tag Manager datalayer event <code>gf_form_submission</code> and includes event parameters when a Gravity Form is submitted. Works with all confirmation types (AJAX, text, redirect, new page). See README.md for technical details.
 Author: Workhorse
-Version: 1.4
+Version: 1.5
 Author URI: https://www.builtbyworkhorse.com/
 */
 
 add_filter( 'gform_confirmation', function ( $confirmation, $form, $entry, $ajax ) {
 
+    // Normalize email address!
+    // To make sure matching is accurate for enhanced conversions; normalize the address
+    function normalizeEmail($email) {
+        list($localPart, $domainPart) = explode('@', $email, 2);
+            if (strpos($localPart, '+') !== false) {
+            $localPart = substr($localPart, 0, strpos($localPart, '+'));
+        }
+            if (strcasecmp($domainPart, 'gmail.com') === 0) {
+            $localPart = str_replace('.', '', $localPart);
+        }
+            $normalizedEmail = $localPart . '@' . $domainPart;
+        return strtolower($normalizedEmail);
+    }
+    
     // Ensure we only proceed for active entries
     if ($entry['status'] !== 'active') {
         return $confirmation;
@@ -26,6 +40,7 @@ add_filter( 'gform_confirmation', function ( $confirmation, $form, $entry, $ajax
             $email_value = rgar( $entry, $email_field_id );
 
             if ( !empty($email_value) ) {
+                $email_value = normalizeEmail($email_value);
                 $hashed_email = hash('sha256', $email_value);
 
                 if ($email_count === 1) {

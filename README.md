@@ -36,3 +36,6 @@ In addition email addresses are normalized before hashing to ensure accurate mat
 * Converts to lowercase
 * Plus addressing removed (`myemail+something@domain.com` becomes `myemail@domain.com`)
 * Gmail addresses also have dots remove from local part (`my.email@gmail.com` becomes `myemail@gmail.com`
+
+## TO DO
+Include other fields

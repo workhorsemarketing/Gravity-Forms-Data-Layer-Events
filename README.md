@@ -1,5 +1,8 @@
 # Gravity Forms Data Layer Events for WordPress
+
 A very simple WordPress Plugin to Fire off data layer events for Gravity Forms.
+
+## Features
 
 Fires off a Google Tag Manager data layer event `gf_form_submission` and includes parameters: 
 
@@ -9,7 +12,17 @@ Fires off a Google Tag Manager data layer event `gf_form_submission` and include
 * `emailX_hashed` : SHA-256 hashed version of the email
 * `gf_total` : Form total if form collects $ / is selling a product
 
-For example:
+### Customizable Redirect delay
+
+When using a redirect confirmation, there is a 1 second delay to give time for tags to fire in GTM. if you'd like to delay the submission longer you can add this filter to your theme:
+
+```
+add_filter( 'gfdle_redirect_delay', function() {
+    return 1500; // 1.5 seconds
+} );
+```
+
+## Example dataLayer push
 
 ```
 <script>
@@ -29,7 +42,7 @@ if(window.self === window.top){
 </script>
 ```
 
-Works with all confirmation types (AJAX, text, redirect, new page). However we recommend AJAX as it's best for accessibility and user experience.
+## Email Normalization
 
 In addition email addresses are normalized before hashing to ensure accurate matching:
 
@@ -37,5 +50,18 @@ In addition email addresses are normalized before hashing to ensure accurate mat
 * Plus addressing removed (`myemail+something@domain.com` becomes `myemail@domain.com`)
 * Gmail addresses also have dots remove from local part (`my.email@gmail.com` becomes `myemail@gmail.com`
 
-## TO DO
-Include other fields
+## Compatibility
+
+* WordPress 5.0+
+* Gravity Forms 2.4+
+* Gravity Forms Stripe Add-on
+* PHP 7.4+
+* Common caching and optimization plugins
+* Works with AJAX submission (recommended)
+* All Confirmation Types:  Text, Page, and Redirect
+
+## License
+
+This plugin is released under the MIT License.
+
+See the `LICENSE` file for the full license text, including the warranty disclaimer and limitation of liability.

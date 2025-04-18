@@ -65,3 +65,7 @@ In addition email addresses are normalized before hashing to ensure accurate mat
 This plugin is released under the MIT License.
 
 See the `LICENSE` file for the full license text, including the warranty disclaimer and limitation of liability.
+
+## PII Disclaimer
+
+Do not send PII to third-party services unless you know what you're doing and have consent. Email address should be hashed first in GTM via a User-Provided Data variable or other method. [Review Google Analytics policies](https://support.google.com/analytics/answer/6366371?hl=en#zippy=%2Cin-this-article), for example.

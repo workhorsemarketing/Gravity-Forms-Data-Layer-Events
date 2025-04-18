@@ -2,7 +2,7 @@
 /*
 Plugin Name:           Gravity Forms Data Layer Events
 Plugin URI:            https://github.com/workhorsemarketing/Gravity-Forms-Data-Layer-Events
-Description:           Fires off a Google Tag Manager dataLayer event on Gravity Forms confirmations.
+Description:           Fires off a Google Tag Manager datalayer event `gf_form_submission` and includes event parameters when a Gravity Form is submitted. Works with all confirmation types (AJAX, Text, Redirect, Page). See `README.md` for technical details.
 Version:               2.0
 Requires at least:     6.7.2
 Requires PHP:          7.4

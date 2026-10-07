@@ -25,24 +25,34 @@ add_filter( 'gfdle_redirect_delay', function() {
 
 ## Example dataLayer push
 
+The plugin appends an inline script to the confirmation (output is minified; formatted here for readability):
+
 ```
 <script>
-if(window.self === window.top){
-            window.dataLayer = window.dataLayer || [];
-            window.dataLayer.push({
-                "event": "gf_form_submission",
-                "gf_form_id": 2,
-                "gf_form_name": "Form Name Here",
-                "gf_entry_id": 1234,
-                "email": "testing1@builtbyworkhorse.com",
-                "email_hashed": "499039d0728c90994ac99e6ea50355450676bd434a11ec6f86d1f5477429b8c2",
-                "email2": "testing2@builtbyworkhorse.com",
-                "email2_hashed": "ad0f329c326e80765127fd3019336aac74092fc32fe41e435d38f96cfbacc277",
-                "gf_total": 10                
-            });
-        }
+(function () {
+    var w;
+    try { w = window.top || window; } catch (e) { w = window; }
+    if (window.self === w) {
+        w.dataLayer = w.dataLayer || [];
+        w.dataLayer.push({
+            "event": "gf_form_submission",
+            "gf_form_id": 2,
+            "gf_form_name": "Form Name Here",
+            "gf_entry_id": 1234,
+            "email": "testing1@builtbyworkhorse.com",
+            "email_hashed": "499039d0728c90994ac99e6ea50355450676bd434a11ec6f86d1f5477429b8c2",
+            "email2": "testing2@builtbyworkhorse.com",
+            "email2_hashed": "ad0f329c326e80765127fd3019336aac74092fc32fe41e435d38f96cfbacc277",
+            "gf_total": 10
+        });
+    }
+})();
 </script>
 ```
+
+All values are JSON-encoded, so form names containing quotes or HTML can't break the script. Keys that don't apply (`gf_entry_id` on forms that don't save entries, email keys on forms without email fields, `gf_total` on forms without a total) are omitted.
+
+For redirect confirmations the same script also performs the redirect after the delay above, and a `<noscript>` meta refresh is included so visitors without JavaScript still reach the redirect target.
 
 ## Email Normalization
 

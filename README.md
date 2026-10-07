@@ -8,13 +8,14 @@ Fires off a Google Tag Manager data layer event `gf_form_submission` and include
 
 *  `gf_form_id`  : Form ID in Gravity Forms
 *  `gf_form_name` : form name as it exists in Gravity Forms
+*  `gf_entry_id` : Entry ID of the submission in Gravity Forms (omitted if the form doesn't save entries)
 *  `emailX` : plain text email. If there are multiple email fields on the form it will increment X and add a new key/value for each
 * `emailX_hashed` : SHA-256 hashed version of the email
 * `gf_total` : Form total if form collects $ / is selling a product
 
 ### Customizable Redirect delay
 
-When using a redirect confirmation, there is a 1 second delay to give time for tags to fire in GTM. if you'd like to delay the submission longer you can add this filter to your theme:
+When using a redirect confirmation, there is a 500ms delay to give time for tags to fire in GTM. If you'd like to delay the redirect longer you can add this filter to your theme:
 
 ```
 add_filter( 'gfdle_redirect_delay', function() {
@@ -32,6 +33,7 @@ if(window.self === window.top){
                 "event": "gf_form_submission",
                 "gf_form_id": 2,
                 "gf_form_name": "Form Name Here",
+                "gf_entry_id": 1234,
                 "email": "testing1@builtbyworkhorse.com",
                 "email_hashed": "499039d0728c90994ac99e6ea50355450676bd434a11ec6f86d1f5477429b8c2",
                 "email2": "testing2@builtbyworkhorse.com",
@@ -48,12 +50,12 @@ In addition email addresses are normalized before hashing to ensure accurate mat
 
 * Converts to lowercase
 * Plus addressing removed (`myemail+something@domain.com` becomes `myemail@domain.com`)
-* Gmail addresses also have dots remove from local part (`my.email@gmail.com` becomes `myemail@gmail.com`
+* Gmail addresses (`gmail.com` and `googlemail.com`) also have dots removed from the local part (`my.email@gmail.com` becomes `myemail@gmail.com`)
 
 ## Compatibility
 
-* WordPress 5.0+
-* Gravity Forms 2.4+
+* WordPress 6.7.2+
+* Gravity Forms 2.4+ (2.5+ recommended)
 * Gravity Forms Stripe Add-on
 * PHP 7.4+
 * Common caching and optimization plugins
